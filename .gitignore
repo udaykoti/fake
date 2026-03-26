@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Models (large binary files — train locally)
+backend/models/saved/
+*.pkl
+*.pt
+*.bin
+*.safetensors
+
+# Data
+backend/data/processed/
+backend/data/raw_jobs.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+uvicorn.log
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Env files with secrets
+backend/.env
