@@ -53,14 +53,23 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+import os as _os
+
+_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+# Allow any Vercel preview/production URL automatically
+_vercel = _os.getenv("VERCEL_FRONTEND_URL", "")
+if _vercel:
+    _origins.append(_vercel)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",  # covers all vercel previews
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
